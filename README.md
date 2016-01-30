@@ -1,6 +1,6 @@
-# Check your twitter friends (users you are following) for cheating (bots)
+# Check if yours twitters friends (users you are following) are cheating with bots
 
-These tokens are needed for user authentication.
+API/Secret tokens are needed for user authentication.
 Credentials can be generates via Twitter's Application Management:
 https://apps.twitter.com/app/new
 
