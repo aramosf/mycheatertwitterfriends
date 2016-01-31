@@ -11,14 +11,14 @@ import httplib
 import requests
 
 # Edit with your details
-consumer_key = "xxxxxxxxxxx"
-consumer_secret = "xxxxxxxxxxxxxxxxxxxxxxx"
-access_key = "xxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-access_secret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+consumer_key = "xxxxx"
+consumer_secret = "xxxx"
+access_key = "xxxx"
+access_secret = "xxxxx"
 username = "aramosf"
 # twitteraudit cookies
-sessionid="xxx"
-csrftoken="xxxx"
+sessionid="xxxxx"
+csrftoken="xxxxxx"
 ####
 
 
@@ -37,7 +37,7 @@ for n in range(0, len(query["ids"]), 100):
 	ids = query["ids"][n:n+100]
 	subquery = twitter.users.lookup(user_id = ids)
 	for user in subquery:
-	    u = 'https://www.twitteraudit.com/'
+	    	u = 'https://www.twitteraudit.com/'
 		url = u + user["screen_name"]
 		req = requests.get(url)
 		html = BeautifulSoup(req.text,"lxml")
@@ -45,10 +45,9 @@ for n in range(0, len(query["ids"]), 100):
 		try: 
 		   per=find.contents
 		except:
-           pl = { 'csrfmiddlewaretoken' : csrftoken, 'screen_name' : user["screen_name"] }
-           h = { 'Referer': 'https://www.twitteraudit.com/' + user["screen_name"] }
-           req = requests.post(u, data=pl,  cookies={"sessionid": sessionid, "csrftoken": csrftoken}, headers=h )
-           html = BeautifulSoup(req.text,"lxml")
-           per[0]="null"
+	           pl = { 'csrfmiddlewaretoken' : csrftoken, 'screen_name' : user["screen_name"] }
+	           h = { 'Referer': 'https://www.twitteraudit.com/' + user["screen_name"] }
+	           req = requests.post(u, data=pl,  cookies={"sessionid": sessionid, "csrftoken": csrftoken}, headers=h )
+	           per[0]="null"
 		print "user:", user["screen_name"].rstrip(), ":", per[0].rstrip().strip()
 
